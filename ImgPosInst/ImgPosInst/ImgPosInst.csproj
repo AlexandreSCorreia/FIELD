@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\CommandRunner.cs" />
     <Compile Include="Helper\Config.cs" />
     <Compile Include="Helper\Logger.cs" />
     <Compile Include="ImgPosInst.cs">

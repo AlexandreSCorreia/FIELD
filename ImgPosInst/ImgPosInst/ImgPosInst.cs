@@ -162,5 +162,18 @@ namespace ImgPosInst
             DesabilitarBotoes();
             Logger.Log(Logger.LogType.INFO, "Executando processo...");
         }
+        private void btnGerarHostname_Click(object sender, EventArgs e)
+        {
+            string siglaPais = config.siglaPlais;
+            char controleAtivo = cbControleAtivos.Text[0];
+            Unidade unidadeSelecionada = (Unidade)cbBoxUnidades.SelectedItem;
+            string siglaUnidade = unidadeSelecionada.Sigla;
+            char tipoMaquina = cbBoxTipoMaquina.Text[0];
+            string serviceTag = CommandRunner.ExecCommand("wmic bios get serialnumber").Split(';')[1];
+
+            string hostnameGerado = siglaPais + controleAtivo + siglaUnidade + tipoMaquina + serviceTag;
+            hostnameGerado = hostnameGerado.Length > 15 ? hostnameGerado.Substring(0, 15).ToUpper() : hostnameGerado.ToUpper();
+            txtHostname.Text = hostnameGerado;
+        }
     }
 }

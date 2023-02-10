@@ -259,6 +259,7 @@
             this.btnGerarHostname.TabIndex = 11;
             this.btnGerarHostname.Text = "Gerar Hostname";
             this.btnGerarHostname.UseVisualStyleBackColor = true;
+            this.btnGerarHostname.Click += new System.EventHandler(this.btnGerarHostname_Click);
             // 
             // lblTipoMaquina
             // 
