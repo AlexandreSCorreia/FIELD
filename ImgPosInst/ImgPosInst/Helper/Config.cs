@@ -16,7 +16,7 @@ namespace ImgPosInst.Helper
         public List<string> appsWindows { get; set; }
         public string remoteCon { get; set; }
         public string siglaPlais { get; set; }
-        //TODO: COnfigurações default 
+        public StartDefault startDefault { get; set; }
         public string dominio { get; set; }
     }
 }
