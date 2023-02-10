@@ -1,4 +1,5 @@
 ﻿using ImgPosInst.Helper;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -79,13 +80,15 @@ namespace ImgPosInst
                     //Ler o arquivo json
                     string json = File.ReadAllText(p.filePath);
 
-                    //TODO: Deserializar o json em um objeto da classe Person
+                    //Deserializar o json em um objeto da classe Person
+                    Config config = JsonConvert.DeserializeObject<Config>(json);
 
                     try
                     {
                         Application.EnableVisualStyles();
                         Application.SetCompatibleTextRenderingDefault(false);
                         ImgPosInst imgPosInst = new ImgPosInst();
+                        imgPosInst.config = config;
                         Application.Run(imgPosInst);
                     }
                     catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImgPosInst.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace ImgPosInst
 {
     public partial class ImgPosInst : Form
     {
+        public Config config;
+
         public ImgPosInst()
         {
             InitializeComponent();
