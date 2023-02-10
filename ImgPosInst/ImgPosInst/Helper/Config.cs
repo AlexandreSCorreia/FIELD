@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ImgPosInst.Models;
+using System.Collections.Generic;
 
 namespace ImgPosInst.Helper
 {
@@ -11,7 +12,7 @@ namespace ImgPosInst.Helper
         public List<string> winstore { get; set; }
         public List<string> wXEPerformance { get; set; }
         public List<string> controleAtivos { get; set; }
-        //TODO: propriedade Unidades
+        public List<Unidade> unidades { get; set; }
         public List<string> appsWindows { get; set; }
         public string remoteCon { get; set; }
         public string siglaPlais { get; set; }

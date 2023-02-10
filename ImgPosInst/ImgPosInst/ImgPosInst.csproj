@@ -63,6 +63,7 @@
     <Compile Include="ImgPosInst.Designer.cs">
       <DependentUpon>ImgPosInst.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Unidade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ImgPosInst.resx">
