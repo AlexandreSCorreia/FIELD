@@ -326,6 +326,7 @@
             this.Name = "ImgPosInst";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ferramenta de Pós-Instalação de Imagem";
+            this.Load += new System.EventHandler(this.ImgPosInst_Load);
             this.grpBoxConfiguracoes.ResumeLayout(false);
             this.grpBoxConfiguracoes.PerformLayout();
             this.ResumeLayout(false);
