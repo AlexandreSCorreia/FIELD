@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,21 @@ namespace ImgPosInst
             InitializeComponent();
         }
 
+        private void SetInformacoes_OnChanged(object source, FileSystemEventArgs e)
+        {
+            if (e.ChangeType == WatcherChangeTypes.Changed)
+            {
+                string logText = File.ReadAllText(e.FullPath);
+                if (txtInformacoes.InvokeRequired)
+                {
+                    txtInformacoes.Invoke(new Action(() => txtInformacoes.AppendText(logText + Environment.NewLine)));
+                }
+                else
+                {
+                    txtInformacoes.AppendText(logText + Environment.NewLine);
+                }
+            }
+        }
         private void ConfigComponentes()
         {
             txtHostname.MaxLength = 15;
@@ -116,12 +132,35 @@ namespace ImgPosInst
                 }
             }
         }
-
+        private void DesabilitarBotoes()
+        {
+            btnIniciar.Enabled = false;
+            txtBoxUsuario.Enabled = false;
+            mskTxtBoxSenha.Enabled = false;
+            cbBoxTipoMaquina.Enabled = false;
+            cbBoxUnidades.Enabled = false;
+            cbControleAtivos.Enabled = false;
+            txtHostname.Enabled = false;
+            btnGerarHostname.Enabled = false;
+            ckdListBoxOpcoes.Enabled = false;
+        }
         private void ImgPosInst_Load(object sender, EventArgs e)
         {
             ConfigComponentes();
 
             ConfigValuesDefault();
+
+            FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher.Path = Logger.GetLogDestination();
+            watcher.Filter = Logger.GetLogFilename();
+            watcher.NotifyFilter = NotifyFilters.LastWrite;
+            watcher.Changed += new FileSystemEventHandler(SetInformacoes_OnChanged);
+            watcher.EnableRaisingEvents = true;
+        }
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            DesabilitarBotoes();
+            Logger.Log(Logger.LogType.INFO, "Executando processo...");
         }
     }
 }

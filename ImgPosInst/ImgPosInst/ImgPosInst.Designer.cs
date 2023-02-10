@@ -302,6 +302,7 @@
             this.btnIniciar.TabIndex = 108;
             this.btnIniciar.Text = "Iniciar";
             this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
             // ImgPosInst
             // 
