@@ -21,6 +21,26 @@ namespace ImgPosInst
             InitializeComponent();
         }
 
+        private void ConfigComponentes()
+        {
+            txtHostname.MaxLength = 15;
+
+            SetConfigComboBox(cbBoxUnidades, config.unidades, "Nome", ComboBoxStyle.DropDownList);
+            SetConfigComboBox(cbBoxTipoMaquina, config.machineTypeList, "", ComboBoxStyle.DropDownList);
+            SetConfigComboBox(cbControleAtivos, config.controleAtivos, "", ComboBoxStyle.DropDownList);
+
+            List<String> listaOpcoes = new List<string>() 
+            {
+                "Apps do Windows",
+                "Plano de Energia",
+                "Office 365",
+                "Bloquear Loja",
+                "Conexão Remota",
+                "Serviços"
+            };
+
+            ckdListBoxOpcoes.Items.AddRange(listaOpcoes.ToArray());
+        }
         private void ConfigValuesDefault()
         {
             //Default Config in start
@@ -99,6 +119,8 @@ namespace ImgPosInst
 
         private void ImgPosInst_Load(object sender, EventArgs e)
         {
+            ConfigComponentes();
+
             ConfigValuesDefault();
         }
     }
